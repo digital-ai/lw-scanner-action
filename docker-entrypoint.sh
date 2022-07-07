@@ -20,6 +20,9 @@ fi
 if [ ! -z "${INPUT_BUILD_REPORT_FILE_NAME}" ]; then
     export SCANNER_PARAMETERS="${SCANNER_PARAMETERS} --html-file ${INPUT_BUILD_REPORT_FILE_NAME}"
 fi
+if [ ! -z "${INPUT_VERBOSE_OUTPUT}" ]; then
+    export SCANNER_PARAMETERS="${SCANNER_PARAMETERS} -v=${INPUT_VERBOSE_OUTPUT}"
+fi
 
 # Remove old scanner evaluation, if cached somehow
 rm ${GITHUB_WORKSPACE}/evaluations/${INPUT_IMAGE_NAME}/${INPUT_IMAGE_TAG}/evaluation_*.json &>/dev/null || true
