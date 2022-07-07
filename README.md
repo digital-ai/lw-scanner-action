@@ -14,7 +14,7 @@ To add the scanner to your workflow:
 - uses: lacework/lw-scanner-action@v1.0.0
   name: Scan container image for vulnerabitilies using Lacework
   with:
-    LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }} 
+    LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
     LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
     IMAGE_NAME: techallylw/vulnerable-container
     IMAGE_TAG: v0.0.1
@@ -23,7 +23,7 @@ To add the scanner to your workflow:
 Options:
 
 | Option                     | Description                                                                                                                                      | Default                                |
-|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
 | `LW_ACCOUNT_NAME`          | Your Lacework account name (see [docs](https://docs.lacework.com/integrate-inline-scanner#configure-authentication-using-environment-variables)) |                                        |
 | `LW_ACCESS_TOKEN`          | Authorization token (see [docs](https://docs.lacework.com/integrate-inline-scanner#obtain-the-inline-scanner-and-authorization-token))           |                                        |
 | `IMAGE_NAME`               | Name of the container to be scanned, for example `node`                                                                                          |                                        |
@@ -32,23 +32,26 @@ Options:
 | `SAVE_RESULTS_IN_LACEWORK` | Save results to your Lacework account                                                                                                            | `true`                                 |
 | `SAVE_BUILD_REPORT`        | Saves the evaluation report as a local HTML file.                                                                                                | `false`                                |
 | `BUILD_REPORT_FILE_NAME`   | Specify custom file name for the HTML evalutation report                                                                                         | `<OS_TYPE>-<IMAGE_DIGEST_SHA256>.html` |
+| `JSON_OUTPUT`              | Set to `true` to enable JSON results which can be parsed                                                                                         |
+| `false`                    |
 
 ## Example
 
 ```yaml
 jobs:
-    build:
-        steps:
-            - uses: lacework/lw-scanner-action@v1.0.0
-              name: Scan container images for vulnerabitilies using Lacework
-              with:
-                LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }} 
-                LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
-                IMAGE_NAME: techallylw/vulnerable-container
-                IMAGE_TAG: v0.0.1
-                SAVE_RESULTS_IN_LACEWORK: true
-                SAVE_BUILD_REPORT: true
-                BUILD_REPORT_FILE_NAME: myreport.html
+  build:
+    steps:
+      - uses: lacework/lw-scanner-action@v1.0.0
+        name: Scan container images for vulnerabitilies using Lacework
+        with:
+          LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
+          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
+          IMAGE_NAME: techallylw/vulnerable-container
+          IMAGE_TAG: v0.0.1
+          SAVE_RESULTS_IN_LACEWORK: true
+          SAVE_BUILD_REPORT: true
+          BUILD_REPORT_FILE_NAME: myreport.html
+          JSON_OUTPUT: true
 ```
 
 ## Contributing
@@ -71,3 +74,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```

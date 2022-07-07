@@ -1,3 +1,3 @@
-FROM lacework/lacework-inline-scanner:0.2.9
+FROM lacework/lacework-inline-scanner:0.5.0
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
