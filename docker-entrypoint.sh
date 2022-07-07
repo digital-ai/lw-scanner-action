@@ -20,8 +20,10 @@ fi
 if [ ! -z "${INPUT_BUILD_REPORT_FILE_NAME}" ]; then
     export SCANNER_PARAMETERS="${SCANNER_PARAMETERS} --html-file ${INPUT_BUILD_REPORT_FILE_NAME}"
 fi
-if [ ! -z "${INPUT_VERBOSE_OUTPUT}" ]; then
-    export SCANNER_PARAMETERS="${SCANNER_PARAMETERS} -v=${INPUT_VERBOSE_OUTPUT}"
+if [ ! -z "${INPUT_JSON_OUTPUT}" ]; then
+    if [ "${INPUT_JSON_OUTPUT}" = "true" ]; then
+        export SCANNER_PARAMETERS="${SCANNER_PARAMETERS} -v=false"
+    fi
 fi
 
 # Remove old scanner evaluation, if cached somehow

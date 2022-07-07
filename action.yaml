@@ -29,9 +29,10 @@ inputs:
   BUILD_REPORT_FILE_NAME:
     description: "Specify custom file name for the HTML evalutation report, by default the name is OS_TYPE-IMAGE_DIGEST_SHA256.html."
     required: false
-  VERBOSE_OUTPUT:
-    description: "Enable or disable verbose output. Setting to false forces the output to be in JSON"
+  JSON_OUTPUT:
+    description: "Enable JSON output"
     required: false
+    default: "false"
 
 runs:
   using: "docker"
